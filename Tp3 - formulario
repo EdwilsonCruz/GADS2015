@@ -1,0 +1,120 @@
+<html>
+   <head>
+   <meta charset="utf-8">
+      <script>
+	  function validaCampos(){
+validaNome();
+validaCpf();
+validaEmail();
+validaSenha();
+
+}
+
+function validaNome(){
+
+		var nome = document.getElementById("nome").value;
+//    var alphaExp = /^[a-zA-Z]+$/;
+
+ if( nome == "" || nome.length < 3){
+   alert("Permitido Somente Letras.");
+     formularioCadastro.nome.focus();
+     return false;
+ }
+}
+
+
+ function validaCpf(){
+
+	  var cpf = document.getElementById("cpf").value;
+    var i;
+    s = cpf;
+    var cpf = s.substr(0,9);
+    var dv = s.substr(9,2);
+    var d1 = 0;
+    var v = false;
+
+    for (i = 0; i < 9; i++){
+        d1 += cpf.charAt(i)*(10-i);
+    }
+    if (d1 == 0){
+        alert("CPF Inválido")
+        v = true;
+        return false;
+    }
+    d1 = 11 - (d1 % 11);
+    if (d1 > 9) d1 = 0;
+    if (dv.charAt(0) != d1){
+        alert("CPF Inválido");
+
+        v = true;
+        return false;
+    }
+
+    d1 *= 2;
+    for (i = 0; i < 9; i++){
+        d1 += cpf.charAt(i)*(11-i);
+    }
+    d1 = 11 - (d1 % 11);
+    if (d1 > 9) d1 = 0;
+    if (dv.charAt(1) != d1){
+        alert("CPF Inválido");
+        v = true;
+        return false;
+    }
+}
+
+
+function validaEmail() {
+	var email = document.getElementById("email").value;
+	if(email.indexOf("@")==-1 || email.indexOf(".")==-1){
+			alert('Campo Email Obrigatorio');
+			formularioCadastro.email.focus();
+			return false;
+    }else if (email.indexOf("@") != email.lastIndexOf("@")) {
+            alert('Não pode haver mais de um @ no email.')
+            return false;
+            }
+		}
+
+
+function validaSenha(){
+	var senha = document.getElementById("senha").value;
+	var senhaConfirmacao = document.getElementById("senhaConfirmacao").value;
+
+//  var senhaExp = /^[A-Z]{3}[a-z][0-9]{2}+$/;
+  if(senha =="" || senha != senhaConfirmacao){
+    if(!checkSenha(senha.value)){
+      alert('Senha errada');
+      formularioCadastro.senha.focus();
+      return false;
+    }
+  }
+}
+
+function checkSenha(senha)
+            {
+              var re = /^(?=.*\d{2})(?=.*[a-z])(?=.*[A-Z]{3})(?=.*[$@$!%*?&]{1}).{8,}$/;
+              return re.test(senha);
+            }
+
+
+      </script>
+      <title>Cadastro de Cliente</title>
+   </head>
+
+<body>
+      <form action="#" method="post" id="formularioCadastro" onsubmit="#">
+         <label for="nome">Nome do Cliente:</label>
+         <input name="nome" id="nome" type="text"><br />
+         <label for="cpf">Cpf:</label>
+         <input name="cpf" id="cpf" type="text"><br />
+         <label for="email">Email:</label>
+         <input name="email" id="email" type="text"><br />
+         <label for="senha">Senha:</label>
+         <input type="password" name="senha" id="senha" /><br />
+         <label for="senhaConfirmacao">Confirme a senha:</label>
+         <input type="password" name="senhaConfirmacao" id="senhaConfirmacao" /><br />
+         <input type="button" value="Cadastrar" onclick="return validaCampos(this)"/>
+      </form>
+   </body>
+</html>
