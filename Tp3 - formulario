@@ -7,12 +7,11 @@ validaNome();
 validaCpf();
 validaEmail();
 validaSenha();
-
 }
 
 function validaNome(){
 
-		var nome = document.getElementById("nome").value;
+	var nome = document.getElementById("nome").value;
 //    var alphaExp = /^[a-zA-Z]+$/;
 
  if( nome == "" || nome.length < 3){
@@ -81,7 +80,6 @@ function validaSenha(){
 	var senha = document.getElementById("senha").value;
 	var senhaConfirmacao = document.getElementById("senhaConfirmacao").value;
 
-//  var senhaExp = /^[A-Z]{3}[a-z][0-9]{2}+$/;
   if(senha =="" || senha != senhaConfirmacao){
     if(!checkSenha(senha.value)){
       alert('Senha errada');
