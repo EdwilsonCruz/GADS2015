@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <input type="text" id="x" value=""><br>
+  <input type="text" id="y" value=""> <br> <br>
+  <button id="somar" value="+" name="somar">+</button>
+  <button id="diminuir" value="-" name="diminuir">-</button>
+  <button id="multiplicar" value="x" name="multiplicar">*</button>
+  <button id="dividir" value="/" name="dividir">/</button>
+  <button id="apagar" value="CE" name="apagar">CE</button><br><br>
+  <input type="text" id="result" value="" name="result">
+  <script>
+    $("#somar").click(function(){
+      var x = $("#x").val();
+      var x_int = parseInt(x);
+      var y = $("#y").val();
+        var y_int = parseInt(y);
+      var total = x_int+y_int;
+      $("#result").val(total);
+    });
+
+    $("#diminuir").click(function(){
+      var x = $("#x").val();
+      var x_int = parseInt(x);
+      var y = $("#y").val();
+      var y_int = parseInt(y);
+      var total = x_int-y_int;
+      $("#result").val(total);
+    });
+    $("#multiplicar").click(function(){
+      var x = $("#x").val();
+      var x_int = parseInt(x);
+      var y = $("#y").val();
+      var y_int = parseInt(y);
+      var total = x_int*y_int;
+      $("#result").val(total);
+    });
+    $("#dividir").click(function(){
+      var x = $("#x").val();
+      var x_int = parseInt(x);
+      var y = $("#y").val();
+      var y_int = parseInt(y);
+      var total = x_int/y_int;
+      $("#result").val(total);
+    });
+    $("#apagar").click(function(){
+      $("input").val("");
+
+    });
+
+
+  </script>
+</body>
+</html>
